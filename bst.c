@@ -10,7 +10,7 @@ Node *NewEmployee(char name){ /*we take in the new employee*/
   newEmp->right=NULL;
   return newEmp;
 }
-void Insert(Node* root, char name){
+Node* Insert(Node* root, char name){
   if(root==NULL){
     root= newEmployee(name);
     return root;
