@@ -3,11 +3,10 @@
 #include <string.h>
 #include "bst.h"
 
-void insertPerson(Node* root, String name);
 
 int main(){
-
-  Node* root = NULL;//creates the empty tree
-  insertPerson(root, "Diana Juarez");
-  printf("Hello I ran\n");
+  printf("Hello, I am testing to see if i work! :-) \n");
+  Node* root =NULL;/*empty tree is made */
+  root=Insert(root,'D');
 }
+

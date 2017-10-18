@@ -1,11 +1,11 @@
-#ifndef bst_included
-#define bst_included
+#ifndef bst_include
+#define bst_include
 
-struct Node{
-  char name;
-  Node* left;
-  Node* right;
+typedef struct Node{
+  char* name;
+  struct Node *left;
+  struct Node *right;
 }
+  Node;
 
-  Node* rootNode; //stores address of root node
-rootNode = NULL; //will set the empty tree as null
+#endif
