@@ -1,9 +1,8 @@
-#include "bst.c"
 #ifndef bst_included
 #define bst_included
 
 struct Node{
-  String name;
+  char name;
   Node* left;
   Node* right;
 }

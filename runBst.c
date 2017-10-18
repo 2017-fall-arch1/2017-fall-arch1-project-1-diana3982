@@ -9,5 +9,5 @@ int main(){
 
   Node* root = NULL;//creates the empty tree
   insertPerson(root, "Diana Juarez");
- printf("Hello I ran"):
+  printf("Hello I ran\n");
 }

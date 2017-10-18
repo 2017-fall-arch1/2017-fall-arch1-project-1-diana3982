@@ -1,6 +1,6 @@
 all: runBst
 
-CFLAGS=-g -03
+CFLAGS= -g -O3
 
 runBst: bst.o runBst.o
 	cc -o $@ $^

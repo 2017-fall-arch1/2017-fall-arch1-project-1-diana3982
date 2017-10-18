@@ -4,5 +4,5 @@
 #include "bst.h"
 
 /* To insert a new node */
-void insertNode(Node* rootNode, String name){  
+void insertNode(Node* rootNode, char name){  
 }
