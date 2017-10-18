@@ -1,3 +1,13 @@
+#employee system - lab1
+Code attempts to add new employees to a binary search tree system.
+The bst.c file has the methods which run the rfuntions of the employee system 
+the bst.h has the calls to the methods in the .c file
+runBst.c contains the main method in which the user will input names for a tree system.
+
+to compile:
+$ cc runBst.c
+
+
 # arch1-linked-list-demo
 
 This directory contains:
