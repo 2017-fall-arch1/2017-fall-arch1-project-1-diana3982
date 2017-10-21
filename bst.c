@@ -4,34 +4,29 @@
 #include <assert.h>
 #include "bst.h"
 
-Node *NewEmployee(char *name){ /*we take in the new employee*/
-  Node *newEmp =  (Node*)malloc(sizeof(Node));
-  newEmp->name=name;
-  newEmp->left=NULL;
-  newEmp->right=NULL;
+Node* NewEmployee(char name){ /*we take in the new employee*/
+  Node *newEmp = (Node*)malloc(sizeof(Node));
+  newEmp->name = name;
+  newEmp->left = NULL;
+  newEmp->right = NULL;
   return newEmp;
 }
-Node *Insert(Node* root, char name){
-  if(root==NULL){ /*For empty tree */
-    root= newEmployee(name);
-    return root;
-  }
-  else{
-    int check = Compare(*root, *name);
-    if(check == 0 || check == 2){
-      root->right=Insert(root->right,newEmployee);
-      }
-    else
-      {root->left= Insert(root->left, newEmployee);}
-    
-  }
-}
+Node* Insert(Node *root, char* name){
 
-int Compare(char *r, char *n);{
-  if(strcmp(*r, *n)==0) /* if name is the same */
-    {  return 0;}
-  else if(strcmp(*r, *n) > 0)/* if root is greater than new employee */
-    {return 1;}
-  else /* when root is smaller than employee */
-    return 2;
- }
+  if(root==NULL){ /*For empty tree */
+    root = newEmployee(name);
+  }
+  else{ /* When we do not have a empty tree*/
+    int compare = strcmp(root,name); /* We check if the names are < = > */
+
+    if(compare < 0)/* root is smaller than newEmployee */
+    {
+      root->right = Insert(root->right, name); /* try to insert into right node */
+    }
+    if(compare >= 0)/* The newEmployee is the same as or larger than root */
+    {
+      root->left = Insert(root->left, name); /* Try to insert into left */
+    }
+  }
+  return root;
+}
