@@ -3,12 +3,12 @@
 #include <string.h>
 #include "bst.h"
 
-void Insert(Node* root, char name);
-
 int main(){
-  printf("Hello, I am testing to see if i work! :-) \n");
-  Node* root =NULL;/*empty tree is made */
-  root=Insert(root,'D');
-  root-Insert(root,'J');
-}
+  Node* root = NULL;/*empty tree is made */
 
+  root = Insert(root, "Diana");
+  root = Insert(root, "Jackson");
+
+
+  return 0;
+}
