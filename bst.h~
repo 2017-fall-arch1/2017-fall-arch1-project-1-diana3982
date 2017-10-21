@@ -1,8 +1,0 @@
-#ifndef bst_included
-#define bst_included
-
-struct Node{
-  String name;
-  Node* left;
-  Node* right;
-}
