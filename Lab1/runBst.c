@@ -54,5 +54,6 @@ int main(){
       printf("Invalid input try again...\n");
     }
 }
+  printf("Goodbye! :-)");
   return 0;
 }
