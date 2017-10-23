@@ -1,31 +1,31 @@
 #ifndef bst_include
 #define bst_included
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <assert.h>
+#include <string.h>
 #include "bst.h"
 
 typedef struct Node{
-  char name;
+  char* name;
   struct Node* left;
   struct Node* right;
 }Node;
 
-Node* NewEmployee(char name){ /*we take in the new employee*/
+Node* NewEmployee(char* emp){ /*we take in the new employee*/
   Node *newEmp = (Node*)malloc(sizeof(Node));/*newEmp node*/
-  newEmp->name = name; /* assign the name */
+  newEmp->name = emp; /* assign the name */
   newEmp->left = NULL;/* create dummy child left*/
   newEmp->right = NULL;/* create dummy chile right*/
   return newEmp;
 }
-Node* Insert(Node *root, char* name){
+
+Node* Insert(Node *root, char *name){
 
   if(root==NULL){ /*For empty tree */
-    root = newEmployee(name);
+    return NewEmployee(name);
   }
   else{ /* When we are not at an empty node*/
-    int compare = strcmp(root,name); /* We check if the names are < = > */
+    int compare = strcmp(root->name, name); /* We check if the names are < = > */
 
     if(compare < 0)/* root is smaller than newEmployee */
     {
@@ -46,7 +46,7 @@ Node* Delete(Node* root, char* name){
   }
 
   Node *curr;
-  int compare = strcmp(root,name); /* We check if the names are < = > */
+  int compare = strcmp(root->name,name); /* We check if the names are < = > */
 
   if(compare < 0){/* root is smaller than the employee */
     root->right = Delete(root->right, name); /* try to insert into right node */
