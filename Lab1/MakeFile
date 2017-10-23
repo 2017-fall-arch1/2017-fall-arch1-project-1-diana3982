@@ -1,0 +1,22 @@
+all: runBst
+
+CFLAGS=-g -O3
+
+# Symbols helpful for understanding the productions
+#   $@ is the production's target
+#   $^ are the production's prerequisites
+
+runBst: bst.o runBst.o
+	cc -o $@ $^
+
+bst.o: bst.c bst.h
+	cc -c $(CFLAGS) bst.c
+
+runBst.o: runBst.c bst.h
+	cc -c $(CFLAGS) runBst.c
+
+clean:
+	rm -f *.o runBst
+
+demo: runBst
+	 ./runBst
