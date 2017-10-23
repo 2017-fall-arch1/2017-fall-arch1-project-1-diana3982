@@ -1,97 +1,67 @@
-#ifndef bst_include
-#define bst_included
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "bst.h"
 
-typedef struct Node{
-  char* name;
-  struct Node* left;
-  struct Node* right;
-}Node;
+int main(){
+  struct Node* root = NULL;/*empty tree is made */
 
-Node* NewEmployee(char* emp){ /*we take in the new employee*/
-  Node *newEmp = (Node*)malloc(sizeof(Node));/*newEmp node*/
-  newEmp->name = emp; /* assign the name */
-  newEmp->left = NULL;/* create dummy child left*/
-  newEmp->right = NULL;/* create dummy chile right*/
-  return newEmp;
+  printf("Hello! Welcome to the Personnel Managment System.\n");
+
+  int cont = 1;
+
+  while(cont == 1){
+
+    int ans;
+    char name[] = "";/* strings store as char arrays*/
+
+    if(root != NULL)
+    printf("%s%s ",root->name, " is the root");
+
+    printf("\nPlease select a function you would like to perform:\n"
+    "1: Add Employee\n"
+    "2: Remove Employee\n"
+    "3: Display Employee List\n");
+    scanf(" %d", &ans);
+
+    if(ans == 1){
+      printf("Please Enter Name of New Employee:\n");
+      scanf(" %s",name);
+      root = Insert(root, name);
+
+      printf("%s%s\n",root->name, "!");
+
+      printf("\nWould you like to \n"
+      "1: Continue or \n"
+      "0: Exit System?\n");
+      scanf("%d", &cont);
+    }
+    else if(ans == 2){
+      printf("We are Removing an Employee\n");
+      printf("Please Enter Name of the Employee to Remove:\n");
+      scanf(" %s",name);
+      root = Delete(root, name);
+
+      printf("\nWould you like to \n"
+      "1: Continue or \n"
+      "0: Exit System?\n");
+      scanf("%d", &cont);
+    }
+    else if(ans == 3){
+      printf("These are the Current Employees:\n");
+
+      Traverse(root);
+
+      printf("\nWould you like to \n"
+      "1: Continue or \n"
+      "0: Exit System?\n");
+      scanf("%d", &cont);
+    }
+    else if(ans == -1){
+      printf("Invalid input try again...\n");
+      ans = -1;
+    }
 }
-
-Node* Insert(Node *root, char *name){
-
-  if(root==NULL){ /*For empty tree */
-    return NewEmployee(name);
-  }
-  else{ /* When we are not at an empty node*/
-    int compare = strcmp(root->name, name); /* We check if the names are < = > */
-
-    if(compare < 0)/* root is smaller than newEmployee */
-    {
-      root->right = Insert(root->right, name); /* try to insert into right node */
-    }
-    if(compare >= 0)/* The newEmployee is the same as or larger than root */
-    {
-      root->left = Insert(root->left, name); /* Try to insert into left */
-    }
-  }
-  return root;
+  printf("Goodbye! :-)\n");
+  return 0;
 }
-
-Node* Delete(Node* root, char* name){
-
-  if(root == NULL){
-    return NULL;
-  }
-
-  Node *curr;
-  int compare = strcmp(root->name,name); /* We check if the names are < = > */
-
-  if(compare < 0){/* root is smaller than the employee */
-    root->right = Delete(root->right, name); /* try to insert into right node */
-  }
-
-  if(compare > 0){/* The employee larger than the root */
-    root->left = Delete(root->left, name); /* Try to insert into left */
-  }
-  if(compare == 0){/* We found the employee to delete*/
-    if(root->left == NULL){
-      curr = root->right;/* points to the right child */
-      free(root); /* deallocates the memory of the root */;
-      root = curr; /*we now make the curr node take place of the previous root */
-    }
-    else if(root->right == NULL){
-      curr = root->left;/* points to the left child */
-      free(root); /* deallocates the memory of the root */;
-      root = curr; /*we now make the curr node take place of the previous root */
-    }
-    else{ /* when we have a left and right child */
-      curr = root->right;/* we point to the right child  */
-      Node *parent = NULL;/* create dummy parent node */
-
-      while(curr->left != NULL){/* the employee to the left of root->right */
-        parent = curr; /* parent dummy is right child of the employee to be removed*/
-        curr = curr->left;/* curr now points to the smaller employee of the right child */
-      }
-      root->name = curr->name;/* reassign the name of the root employee */
-      if(parent != NULL){
-        parent->left = Delete(parent->left,parent->left->name);
-      }
-      else{
-        root->right = Delete(root->right, root->right->name);
-      }
-    }
-  }
-  return root;
-}
-
-void Traverse(Node *root){ /* Traverse to print employees */
-  if(root != NULL){
-    Traverse(root->left);
-    printf("%s", root->name);
-    Traverse(root->right);
-  }
-}
-
-#endif
