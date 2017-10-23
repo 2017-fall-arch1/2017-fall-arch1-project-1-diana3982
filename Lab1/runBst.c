@@ -9,10 +9,11 @@ int main(){
   printf("Hello! Welcome to the Personnel Managment System.\n");
 
   int cont = 1;
-  int ans;
-  char* name = "";
-
   while(cont == 1){
+
+    int ans = -1;
+    char name[] = "";/* strings store as char arrays*/
+
     printf("\nPlease select a function you would like to perform:\n"
     "1: Add Employee\n"
     "2: Remove Employee\n"
@@ -20,10 +21,10 @@ int main(){
     scanf(" %d", &ans);
 
     if(ans == 1){
-      char name[] = "";/* strings store as char arrays*/
       printf("Please Enter Name of New Employee:\n");
       scanf(" %s",name);
       root = Insert(root, name);
+      printf("%s %s ", root->name, "!!");
 
       printf("\nWould you like to \n"
       "1: Continue or \n"
@@ -50,10 +51,11 @@ int main(){
       "0: Exit System?\n");
       scanf("%d", &cont);
     }
-    else{
+    else {
       printf("Invalid input try again...\n");
+      cont = 1;
     }
 }
-  printf("Goodbye! :-)");
+  printf("Goodbye! :-)\n");
   return 0;
 }
