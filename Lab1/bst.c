@@ -94,7 +94,4 @@ void Traverse(Node *root){ /* Traverse to print employees */
   }
 }
 
-int main(){
-  return 0;
-}
 #endif
