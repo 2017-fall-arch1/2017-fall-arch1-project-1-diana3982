@@ -10,6 +10,7 @@ int main(){
 
   int cont = 1;
   int ans;
+  char* name = "";
 
   while(cont == 1){
     printf("\nPlease select a function you would like to perform:\n"
@@ -18,30 +19,39 @@ int main(){
     "3: Display Employee List\n");
     scanf(" %d", &ans);
 
-    printf("%d\n",ans );
-
     if(ans == 1){
-      char* name = "";
+      char name[] = "";/* strings store as char arrays*/
       printf("Please Enter Name of New Employee:\n");
       scanf(" %s",name);
       root = Insert(root, name);
-      cont = 0;
 
+      printf("\nWould you like to \n"
+      "1: Continue or \n"
+      "0: Exit System?\n");
+      scanf("%d", &cont);
     }
     else if(ans == 2){
       printf("We are Removing an Employee\n");
+      printf("Please Enter Name of the Employee to Remove:\n");
+      scanf(" %s",name);
+      root = Delete(root, name);
 
-      cont = 0;
+      printf("\nWould you like to \n"
+      "1: Continue or \n"
+      "0: Exit System?\n");
+      scanf("%d", &cont);
     }
     else if(ans == 3){
       printf("These are the Current Employees:\n");
+      Traverse(root);
 
-      cont = 0;
+      printf("\nWould you like to \n"
+      "1: Continue or \n"
+      "0: Exit System?\n");
+      scanf("%d", &cont);
     }
     else{
       printf("Invalid input try again...\n");
-
-      cont = 0;
     }
 }
   return 0;
